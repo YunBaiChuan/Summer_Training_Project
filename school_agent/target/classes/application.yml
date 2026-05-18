@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  data:
+    redis:
+      port: 6379
+      host: localhost
+      database: 0
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_final?characterEncoding=UTF-8
+    username: root
+    password: "@Qwer1234"
+  ai:
+    vectorstore:
+      pinecone:
+        api-key: pcsk_346h7e_B14QdetCv6qFK17g6fgf11LEzsgapVAAmpnWE6Z2d8SbFJYtR8mYo6LETAmyc4k
+        index-name: book #指定向量索引的名称
+        dimensions: 768 #向量嵌入（Embeddings）的维度数
+        similarity: cosine #指定向量相似度计算的度量方法。这里配置的是“余弦相似度”（Cosine Similarity）
+    deepseek:
+      api-key: sk-408c907d4d52496b9643bb431b4d05f9
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+          temperature: 0
+    openai:
+      api-key: sk-yqsyvtpjniqvxbcrrpwtazrbxflwvomtzdclnsjwntldsnum
+      base-url: https://api.siliconflow.cn/
+      embedding:
+        options:
+          model: netease-youdao/bce-embedding-base_v1
+          dimensions: 1024
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.gxa.pojo
+  configuration:
+    # 输出日志, 可以将真正的执行sql打印在控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启驼峰的自动识别命名规则: peopl_name-> peopleName
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: debug
