@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gxa.mapper.ProductMapper">
+
+    <!-- 根据条件查询商品ID列表 -->
+    <select id="getIdByProduct" parameterType="java.lang.Long" resultType="int">
+        SELECT id
+        FROM product
+        <where>
+            <if test="sellerId != null">
+                AND seller_id = #{sellerId}
+            </if>
+            <if test="categoryId != null">
+                AND category_id = #{categoryId}
+            </if>
+        </where>
+        ORDER BY id
+    </select>
+<update id="updateProductStatus" >
+UPDATE product
+        SET status = #{status},
+            seller_id = #{currentUserId}
+        WHERE id = #{productId}
+</update>
+</mapper>
