@@ -17,9 +17,9 @@ spring:
     vectorstore:
       pinecone:
         api-key: xxxx
-        index-name: book #指定向量索引的名称
-        dimensions: 768 #向量嵌入（Embeddings）的维度数
-        similarity: cosine #指定向量相似度计算的度量方法。这里配置的是“余弦相似度”（Cosine Similarity）
+        index-name: book
+        dimensions: 768
+        similarity: cosine
     deepseek:
       api-key: xxxx
       base-url: https://api.deepseek.com
@@ -33,7 +33,7 @@ spring:
       embedding:
         options:
           model: netease-youdao/bce-embedding-base_v1
-          dimensions: 1024
+          dimensions: 768
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.gxa.pojo
